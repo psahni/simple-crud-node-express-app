@@ -4,6 +4,8 @@
   "description": "My Express Server",
   "main": "yes",
   "scripts": {
+    "dev": "set NODE_ENV=development && node server.js",
+    "prod": "set NODE_ENV=production && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Prashant Sahni",
