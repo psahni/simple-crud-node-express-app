@@ -1,11 +1,16 @@
 require('./src/db/mongodb/mongo_client.js');
 
 const express = require('express');
+const path = require('path');
 const app = express();
 const logger = require('morgan');
 const PORT = process.env.PORT || 3000;
 
-console.log(process.env.NODE_ENV);
+app.set('views', path.join(__dirname, 'src', 'views'));
+app.set('view engine', 'ejs');
+
+console.log("Env:", process.env.NODE_ENV);
+
 app.use(logger('dev'));
 app.use(express.static('public'));
 
@@ -43,6 +48,10 @@ app.get('/', function(req, res) {
   res.send('Hello Prashant!!');
 });
 
+
+app.get('/home', function(req, res) {
+  res.render('home', { title: 'About EJS', message: 'EJS templates working' });
+});
 
 app.listen(PORT, function() {
   console.log(`Example app listening on port ${PORT}!`)
