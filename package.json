@@ -4,19 +4,25 @@
   "description": "My Express Server",
   "main": "yes",
   "scripts": {
-    "dev": "set NODE_ENV=development && node server.js",
+    "start": "SET DEBUG=express-my exress server:* & npm run dev",
+    "dev": "set NODE_ENV=development && nodemon  -e js,ejs server.js",
     "prod": "set NODE_ENV=production && node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src/js"
   },
   "author": "Prashant Sahni",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.3",
     "express": "^4.17.2",
+    "http-errors": "^2.0.0",
     "mongodb": "^4.3.0",
     "mongoose": "^6.1.7",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "ejs": "^3.1.6"
+    "ejs": "^3.1.6",
+    "eslint": "^8.7.0",
+    "nodemon": "^2.0.15"
   }
 }
