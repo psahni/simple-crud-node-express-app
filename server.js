@@ -4,6 +4,7 @@ const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 const app = express();
 const logger = require('morgan');
+const expressLayouts = require('express-ejs-layouts');
 
 require('./src/db/mongoose/mongoose.js');
 
@@ -13,6 +14,8 @@ const catalogRouter = require('./src/routes/catalog');  //Import routes for "cat
 
 const PORT = process.env.PORT || 3000;
 
+app.use(expressLayouts);
+app.set('layout', 'layouts/application');
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 app.use(express.json());
