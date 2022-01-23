@@ -8,7 +8,6 @@ const app = express();
 const logger = require('morgan');
 
 const usersRouter = require('./src/routes/users');
-console.log(usersRouter);
 const PORT = process.env.PORT || 3000;
 
 app.set('views', path.join(__dirname, 'src', 'views'));
