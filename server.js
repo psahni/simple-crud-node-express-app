@@ -7,7 +7,10 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const logger = require('morgan');
 
+const indexRouter = require('./src/routes/index');
 const usersRouter = require('./src/routes/users');
+const catalogRouter = require('./src/routes/catalog');  //Import routes for "catalog" area of site
+
 const PORT = process.env.PORT || 3000;
 
 app.set('views', path.join(__dirname, 'src', 'views'));
@@ -22,23 +25,19 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// const router = express.Router();
-/*
-  router.get('/', function(req, res) {
-    res.send('Wiki home page');
-  });
-*/
 
-// An example middleware function
-let middleFunction = function(req, res, next) {
-  // ... perform some operations
-  console.log('a_middleware_function()');
-  next(); // Call next() so Express will call the next middleware function in the chain.
-}
 
 /* 
-  This is use of middleware without route
+  // An example middleware function
+  let middleFunction = function(req, res, next) {
+    // ... perform some operations
+    console.log('a_middleware_function()');
+    next(); // Call next() so Express will call the next middleware function in the chain.
+  }
+
+  // This is use of middleware without route
   app.use(a_middleware_function);
+  app.use('/someroute', middleFunction);
 */
 
 // Function added with use() for a specific route
@@ -46,15 +45,14 @@ let middleFunction = function(req, res, next) {
  * This is use of middleware with route
  */
 
-
-app.use('/someroute', middleFunction);
-
 app.all('*', function(req, res, next) {
   console.log('$$ Accessing the secret section ...');
   next(); // pass control to the next handler
 });
 
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter);
 
 
 app.get('/', function(req, res) {
