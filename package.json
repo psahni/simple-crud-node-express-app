@@ -5,7 +5,7 @@
   "main": "yes",
   "scripts": {
     "start": "SET DEBUG=express-my-exress-server:* & npm run dev",
-    "dev": "SET NODE_ENV=development & nodemon  -e js,ejs server.js",
+    "dev": "SET NODE_ENV=development & nodemon -L -e js,ejs server.js",
     "prod": "SET NODE_ENV=production & node server.js",
     "lint": "eslint src/js"
   },
@@ -18,10 +18,10 @@
     "http-errors": "^2.0.0",
     "mongodb": "^4.3.0",
     "mongoose": "^6.1.7",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "async": "^3.2.3"
   },
   "devDependencies": {
-    "async": "^3.2.3",
     "ejs": "^3.1.6",
     "eslint": "^8.7.0",
     "nodemon": "^2.0.15"

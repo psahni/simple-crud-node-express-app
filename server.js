@@ -1,11 +1,11 @@
-require('./src/db/mongodb/mongo_client.js');
-
 const express = require('express');
 const path = require('path');
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 const app = express();
 const logger = require('morgan');
+
+require('./src/db/mongoose/mongoose.js');
 
 const indexRouter = require('./src/routes/index');
 const usersRouter = require('./src/routes/users');

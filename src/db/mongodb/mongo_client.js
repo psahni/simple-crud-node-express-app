@@ -1,3 +1,4 @@
+/*
 const MongoClient = require('mongodb').MongoClient;
 
 MongoClient.connect('mongodb://localhost:27017/E-commerce', function(err, client) {
@@ -10,3 +11,4 @@ MongoClient.connect('mongodb://localhost:27017/E-commerce', function(err, client
   });
 });
 
+*/
